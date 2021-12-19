@@ -15,9 +15,12 @@ pub fn render(config: serde_json::Value) {
 
     for row in 0..rows {
         for col in 0..cols {
-            print!(" ".on_truecolor(bg_r, bg_g, bg_b));
+            print!("{}", " ".on_truecolor(*bg_r as u8, *bg_g as u8, *bg_b as u8));
         }
-        println!();
+        
+        if row < rows-1 {
+            println!();
+        }
     }
 
     loop {
