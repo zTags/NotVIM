@@ -8,7 +8,7 @@
 //     on_file_open 	
 // }
 // ```
-// THIS IS PROBABLY GOING TO GET CHANGED.
+// THIS IS PROBABLY GOING TO GET CHANGED
 pub struct Extension {
 	on_file_open: Fn(&str),
 }
