@@ -10,6 +10,8 @@ use std::io::Write;
 
 use serde_json::{Value, from_str};
 
+use dirs::home_dir;
+
 fn main() {
     // TODO take in cli args (if any)
     let argv: Vec<String> = args().collect();
@@ -18,15 +20,14 @@ fn main() {
     }
 
     // TODO load config
-    let cfg_path = match OS {
-        "windows" => "%appdata%/notvim/config.json",
-        "macos"   => unimplemented!(),
-        "linux"   => "/home/tags/.config/notvim/config.json",
-        _         => unimplemented!(),
-    };
+    // Feel like we'll need this at some point.
+    let root_dir = home_dir().unwrap().join(".notvim");
+
+    // Basically before but universal.
+    let cfg_path = &root_dir.join("config.json");
 
     if !Path::new(cfg_path).exists() {
-        create_dir_all("/home/tags/.config/notvim");
+        create_dir_all(root_dir);
         let mut file = File::create(cfg_path).unwrap();
         file.write_all(b"{\n}").unwrap();
     }
