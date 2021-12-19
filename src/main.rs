@@ -1,6 +1,9 @@
 mod rendering;
 use rendering::render;
 
+mod rpc;
+use rpc::start_rpc;
+
 use std::env::args;
 use std::env::consts::OS;
 
@@ -11,9 +14,6 @@ use std::io::Write;
 use serde_json::{Value, from_str};
 
 use dirs::home_dir;
-// TODO implement
-// As a module doesn't seem too viable.
-use discord_rich_presence::{activity, new_client, DiscordIpc};
 
 fn main() {
     // TODO take in cli args (if any)
@@ -39,5 +39,6 @@ fn main() {
     // TODO register plugins
 
     // TODO rendering
+    start_rpc();
     render(config);
 }
