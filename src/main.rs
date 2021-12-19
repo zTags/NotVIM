@@ -35,7 +35,7 @@ fn main() {
     let config: Value = from_str(&read_to_string(cfg_path).unwrap()).expect("Failed to parse config.json");
 
     println!("{}", config);
-    // TODO register commands
+    // TODO register plugins
 
     // TODO rendering
     render(config);
